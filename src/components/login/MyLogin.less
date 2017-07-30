@@ -1,0 +1,74 @@
+.container{
+  width: 750px;
+  padding-top: 200px;
+}
+
+@login_component_width : 680px;
+@to_left : 35px;
+
+.titleContainer{
+  width: @login_component_width;
+  margin-left: @to_left;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.registContainer{
+  width: @login_component_width;
+  margin-left: @to_left;
+  margin-top: 30px;
+  text-align: center;
+}
+
+.registContainer p{
+  color: #ffffff;
+  font-size: 18px;
+}
+
+.titleContainer p{
+  color: #ffffff;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+.inputContainer{
+  background-color: #19181d;
+  width: @login_component_width;
+  margin-left: @to_left;
+  border-radius: 5px;
+  margin-top: 30px;
+}
+.phoneInput{
+  background-color: transparent;
+}
+.phoneInput:after{
+  display: none !important;
+}
+
+.phoneInput input{
+  color: #ffffff !important;
+}
+
+.phoneInput :global(.am-input-label){
+  width: 40px !important;
+  margin-right: 30px;
+}
+
+.phoneIcon{
+  width: 40px;
+  height: 40px;
+}
+
+.btn{
+  width: @login_component_width;
+  margin-left: @to_left;
+  margin-top: 30px;
+  border-radius: 5px;
+  background-color: #6bc6fb;
+  color: #ffffff;
+}
+
+.btnActive{
+  background-color: #19181d;
+  color: #ffffff;
+}

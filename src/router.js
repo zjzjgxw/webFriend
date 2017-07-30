@@ -43,6 +43,16 @@ export default function ({ history, app }) {
             }, 'center');
           },
         },
+        {
+          path: 'login',
+          name: 'login',
+          getComponent(nextState, cb) {
+            require.ensure([], (require) => {
+              registerModel(app, require('./models/center/login'));
+              cb(null, require('./routes/center/login'));
+            }, 'login');
+          },
+        },
       ],
     },
   ];

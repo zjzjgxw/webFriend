@@ -2,6 +2,13 @@
  * Created by gxw on 2017/4/16.
  */
 
+//格式化参数，以后可以增加device信息
+export function formatParams(params) {
+  return {
+    data: params,
+    rest_version: '1.0',
+  }
+}
 
 export function formatTime(time, toDate = false) {
   const date = new Date(parseInt(time) * 1000);

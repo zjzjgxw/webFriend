@@ -9,7 +9,7 @@ export default {
   state: {
     info: {},
     selected: [true, false],
-    ishidden: '',
+    ishidden: false,
   },
 
   subscriptions: {

@@ -1,4 +1,5 @@
 import request from '../utils/request';
+import { formatParams } from '../utils/func';
 
 export async function information(params) {
   return request({
@@ -9,5 +10,13 @@ export async function information(params) {
       page: params.page,
       page_size: params.page_size,
     }
+  })
+}
+
+export async function login(params) {
+  return request({
+    url: `/rest/login`,
+    method: 'POST',
+    data: formatParams(params)
   })
 }

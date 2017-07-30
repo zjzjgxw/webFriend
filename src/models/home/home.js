@@ -22,7 +22,8 @@ export default {
           dispatch({
             type: 'app/save',
             payload: {
-              selected: [true, false]
+              selected: [true, false],
+              ishidden: false,
             }
           })
         }
