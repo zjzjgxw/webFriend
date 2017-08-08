@@ -4,7 +4,7 @@ import { routerRedux } from 'dva/router';
 import styles from './MyLogin.less';
 
 
-function MyLogin({ onLogin, onPhoneBlur, onPasswordBlur, onRegister }) {
+function MyRegister({ onPhoneBlur, onPasswordBlur, onRePasswordBlur, onRegister }) {
   return (<div className={styles.container}>
     <div className={styles.titleContainer}>
       <p>欢迎加入！</p>
@@ -25,13 +25,18 @@ function MyLogin({ onLogin, onPhoneBlur, onPasswordBlur, onRegister }) {
         onBlur={e =>onPasswordBlur(e)}
       ><img className={styles.phoneIcon} src={require('../../assets/images/lock.png')} /></InputItem>
     </div>
-    <Button className={styles.btn} activeClassName={styles.btnActive} onClick={e => onLogin(e)} >登录</Button>
-    <div className={styles.registContainer}>
-      <p onClick={e => onRegister(e)}>还没账号？点击注册</p>
+    <div className={styles.inputContainer}>
+      <InputItem
+        type="password"
+        placeholder="请再次输入密码"
+        className = {styles.phoneInput}
+        onBlur={e =>onRePasswordBlur(e)}
+      ><img className={styles.phoneIcon} src={require('../../assets/images/lock.png')} /></InputItem>
     </div>
+    <Button className={styles.btn} activeClassName={styles.btnActive} onClick={e => onRegister(e)} >注册</Button>
 
   </div>)
   ;
 }
 
-export default MyLogin;
+export default MyRegister;

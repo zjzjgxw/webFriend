@@ -20,3 +20,11 @@ export async function login(params) {
     data: formatParams(params)
   })
 }
+
+export async function register(params) {
+  return request({
+    url: `/rest/user`,
+    method: 'POST',
+    data: formatParams(params)
+  })
+}

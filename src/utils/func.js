@@ -10,6 +10,14 @@ export function formatParams(params) {
   }
 }
 
+export function checkMobile(mobile) {
+  const re = /^1[3|5|7|8][0-9]\d{8}$/;
+  if (!re.test(mobile)) {
+    return false;
+  }
+  return true
+}
+
 export function formatTime(time, toDate = false) {
   const date = new Date(parseInt(time) * 1000);
   const Y = date.getFullYear() + '-';

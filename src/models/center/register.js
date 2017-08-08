@@ -1,22 +1,22 @@
 import { routerRedux } from 'dva/router';
 import { Toast } from 'antd-mobile';
-import { login } from '../../services/app'
-
+import { register } from '../../services/app'
 
 const SUCCESS = 200;
 export default {
 
-  namespace: 'login',
+  namespace: 'register',
 
   state: {
     mobile:'',
     password:'',
+    repassword:'',
   },
 
   subscriptions: {
     setup({ dispatch, history }) {
       history.listen((location) => {
-        if (location.pathname === '/login') {
+        if (location.pathname === '/register') {
           dispatch({
             type: 'app/save',
             payload: {
@@ -30,11 +30,11 @@ export default {
   },
 
   effects: {
-    *login({ payload }, { call, put }) {
-      const res = yield call(login, payload);
+    *register({ payload }, { call, put }) {
+      const res = yield call(register, payload);
       if(res.code === SUCCESS){
         yield put(routerRedux.push({
-          pathname: '/center',
+          pathname: '/login',
         }));
       }else{
         Toast.info(res.msg);

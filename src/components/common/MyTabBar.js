@@ -17,7 +17,6 @@ function HyuTabBar({ selected = [true, false], badges = [0, 0], content, dispatc
     }),
     );
   }
-  console.log(selected);
   return (
       <TabBar
         unselectedTintColor="#949494"

@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'dva';
+import { routerRedux } from 'dva/router';
 import Login from '../../components/login/MyLogin';
 import styles from './login.less';
 
@@ -31,6 +32,12 @@ function login({location,dispatch,login }) {
           password: value
         }
       });
+    },
+    onRegister(e){
+      dispatch(routerRedux.push({
+          pathname: '/register',
+        }),
+      );
     }
   };
   return (
