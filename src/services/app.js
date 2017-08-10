@@ -13,6 +13,14 @@ export async function information(params) {
   })
 }
 
+export async function checkLogin(params) {
+  return request({
+    url: `/rest/user/checkLogin`,
+    method: 'GET',
+    data: formatParams(params)
+  })
+}
+
 export async function login(params) {
   return request({
     url: `/rest/login`,

@@ -1,5 +1,6 @@
 import { routerRedux } from 'dva/router';
 import { Toast } from 'antd-mobile';
+import { checkLogin } from '../../services/app'
 
 const SUCCESS = 200;
 export default {
@@ -7,7 +8,7 @@ export default {
   namespace: 'center',
 
   state: {
-    list: [],
+    info: {},
   },
 
   subscriptions: {
@@ -15,7 +16,7 @@ export default {
       history.listen((location) => {
         if (location.pathname === '/center') {
           dispatch({
-            type: 'query',
+            type: 'checkLogin',
             payload: location.query,
           });
           dispatch({
@@ -31,8 +32,22 @@ export default {
   },
 
   effects: {
-    *query({ payload }, { call, put }) {
-    },
+    *checkLogin({ payload }, { call, put }) {
+      const res = yield call(checkLogin, payload);
+      if (res.code !== SUCCESS) {
+        yield put(routerRedux.push({
+          pathname: '/login',
+        }));
+      } else{
+        yield put({
+          type: 'save',
+          payload: {
+            info: res.data[0]
+          }
+        })
+      }
+    }
+    ,
   },
 
   reducers: {

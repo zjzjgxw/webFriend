@@ -3,6 +3,7 @@ import qs from 'qs'
 import config from './config'
 
 axios.defaults.headers.post['Content-Type'] = 'application/json';
+axios.defaults.withCredentials = true;
 
 const fetch = (options) => {
   const {

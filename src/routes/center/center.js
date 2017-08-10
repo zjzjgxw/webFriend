@@ -5,6 +5,9 @@ import { connect } from 'dva';
 
 
 function center({location,dispatch,center }) {
+  const { info } = center;
+  console.log(info);
+
   function toLogin() {
     dispatch(routerRedux.push({
         pathname: '/login',
