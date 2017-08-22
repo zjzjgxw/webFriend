@@ -2,22 +2,39 @@ import React from 'react';
 import { Button } from 'antd-mobile';
 import { routerRedux } from 'dva/router';
 import { connect } from 'dva';
-
+import ImageTopSelect from '../../components/center/ImgTopSelect';
+import styles from './center.less';
 
 function center({location,dispatch,center }) {
-  const { info } = center;
-  console.log(info);
+  const { info, file } = center;
 
-  function toLogin() {
-    dispatch(routerRedux.push({
-        pathname: '/login',
-      }),
-    );
+  // function toLogin() {
+  //   dispatch(routerRedux.push({
+  //       pathname: '/login',
+  //     }),
+  //   );
+  // }
+  function changeImage(url){
+    console.log(url['url']);
+    dispatch({
+      type:'center/updateImg',
+      payload:{
+        imgUrl: url['url']
+      }
+    })
   }
 
   return (
     <div>
-      <Button className="btn" type="primary" onClick={e =>toLogin()}>login</Button>
+      <div className={styles.img_top} >
+        <div style={{paddingLeft:"38%",paddingTop:"1rem"}}>
+          <ImageTopSelect
+            file={file}
+            onChange={e=>changeImage(e)}
+          >
+          </ImageTopSelect>
+        </div>
+      </div>
     </div>
   );
 }

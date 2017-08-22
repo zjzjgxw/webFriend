@@ -1,0 +1,13 @@
+.img_content{
+    width: 200px;
+    height: 200px;
+    border-radius: 1.5rem;
+    background-size: cover;
+    align-content: center;
+}
+.span{
+    float:left;
+    margin-left:25px;
+    color:#AEAEAE;
+    margin-top: 8px;
+}

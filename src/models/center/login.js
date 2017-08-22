@@ -32,7 +32,6 @@ export default {
   effects: {
     *login({ payload }, { call, put }) {
       const res = yield call(login, payload);
-      console.log(res);
       if(res.code === SUCCESS){
         yield put(routerRedux.push({
           pathname: '/center',

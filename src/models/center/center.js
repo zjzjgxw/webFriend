@@ -9,6 +9,7 @@ export default {
 
   state: {
     info: {},
+    file: 'http://pic.qiantucdn.com/58pic/19/33/22/80458PIC6fy_1024.jpg!/fw/780/watermark/url/L3dhdGVybWFyay12MS4zLnBuZw==/align/center',
   },
 
   subscriptions: {
@@ -46,8 +47,16 @@ export default {
           }
         })
       }
-    }
-    ,
+    },
+    //更新头像
+    *updateImg({ payload }, { call, put }) {
+      yield put({
+        type: 'save',
+        payload: {
+          file: payload.imgUrl
+        }
+      })
+    },
   },
 
   reducers: {
