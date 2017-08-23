@@ -36,3 +36,11 @@ export async function register(params) {
     data: formatParams(params)
   })
 }
+
+export async function uploadImg(params) {
+  return request({
+    url: `/rest/image`,
+    method: 'POST',
+    data: formatParams(params)
+  })
+}

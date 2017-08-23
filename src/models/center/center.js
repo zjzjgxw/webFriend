@@ -1,6 +1,6 @@
 import { routerRedux } from 'dva/router';
 import { Toast } from 'antd-mobile';
-import { checkLogin } from '../../services/app'
+import { checkLogin, uploadImg } from '../../services/app'
 
 const SUCCESS = 200;
 export default {
@@ -50,12 +50,17 @@ export default {
     },
     //更新头像
     *updateImg({ payload }, { call, put }) {
-      yield put({
-        type: 'save',
-        payload: {
-          file: payload.imgUrl
-        }
-      })
+      const res = yield call(uploadImg, payload);
+      if (res.code === SUCCESS) {
+        yield put({
+          type: 'save',
+          payload: {
+            file: payload.imgUrl
+          }
+        })
+      } else{
+        Toast.info(res.msg);
+      }
     },
   },
 

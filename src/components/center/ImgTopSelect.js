@@ -14,7 +14,6 @@ class ImagePicker extends React.Component {
         const reader = new FileReader();
         reader.onload = (e) => {
           const dataURL = rst.base64;
-          console.log(dataURL);
           if (!dataURL) {
             Toast.fail('图片获取失败');
             return;
