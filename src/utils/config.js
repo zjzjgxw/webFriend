@@ -5,7 +5,7 @@
  */
 
 module.exports = {
-  imgPreUrL: '',
+  imgPreUrL: 'http://127.0.0.1:7001',
   devBaseURL: 'http://127.0.0.1:7001',
   prdBaseURL: 'http://127.0.0.1:7001',
 };

@@ -1,6 +1,7 @@
 import { routerRedux } from 'dva/router';
 import { Toast } from 'antd-mobile';
-import { checkLogin, uploadImg } from '../../services/app'
+import { checkLogin, uploadImg } from '../../services/app';
+import config from '../../utils/config';
 
 const SUCCESS = 200;
 export default {
@@ -55,7 +56,7 @@ export default {
         yield put({
           type: 'save',
           payload: {
-            file: payload.imgUrl
+            file: config.imgPreUrL + res.data.filePath
           }
         })
       } else{

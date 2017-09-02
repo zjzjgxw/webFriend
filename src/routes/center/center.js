@@ -15,7 +15,6 @@ function center({location,dispatch,center }) {
   //   );
   // }
   function changeImage(url){
-    console.log(url['url']);
     dispatch({
       type:'center/updateImg',
       payload:{
