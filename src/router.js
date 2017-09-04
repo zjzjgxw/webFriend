@@ -63,6 +63,16 @@ export default function ({ history, app }) {
             }, 'register');
           },
         },
+        {
+          path: 'publish',
+          name: 'publish',
+          getComponent(nextState, cb) {
+            require.ensure([], (require) => {
+              registerModel(app, require('./models/home/publish'));
+              cb(null, require('./routes/home/publish'));
+            }, 'publish');
+          },
+        },
       ],
     },
   ];
