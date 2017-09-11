@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'dva';
 import { NavBar } from 'antd-mobile';
 import { routerRedux } from 'dva/router';
+import MsgContainer from '../../components/home/MsgContainer'
 
 
 function home({location,dispatch,home }) {
@@ -18,7 +19,7 @@ function home({location,dispatch,home }) {
                 <p key="publish" onClick={e=>publish(e)}>发布</p>,
               ]}
       ></NavBar>
-      Home
+      <MsgContainer/>
     </div>
   );
 }
