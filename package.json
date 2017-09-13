@@ -18,7 +18,8 @@
     "lrz": "^4.9.40",
     "postcss-pxtorem": "^3.3.1",
     "react": "^15.4.0",
-    "react-dom": "^15.4.0"
+    "react-dom": "^15.4.0",
+    "react-imageview": "^1.2.1"
   },
   "devDependencies": {
     "babel-eslint": "^7.1.1",

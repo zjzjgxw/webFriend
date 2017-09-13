@@ -3,6 +3,7 @@ import { routerRedux } from 'dva/router';
 import ImgGrid from '../common/ImgGrid';
 import styles from './MsgContainer.less';
 
+
 function MsgContainer({ imgs, imgTop, nickname='匿名', content='' }) {
   const imgGridProp = {
     imgs
