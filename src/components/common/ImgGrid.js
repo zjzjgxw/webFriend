@@ -23,7 +23,7 @@ function ImgGrid({ imgs }) {
           columnNum={3}
           renderItem={dataItem => (
             <div >
-              <img className={styles.imgGridItem} src={dataItem.icon} alt="icon" align="middle" />
+              <div style={{backgroundImage:`url(${dataItem.icon})`}}  className={styles.imgGridItem} />
             </div>
           )}/>
   </div>)

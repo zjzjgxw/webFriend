@@ -3,7 +3,7 @@ import { routerRedux } from 'dva/router';
 import ImgGrid from '../common/ImgGrid';
 import styles from './MsgContainer.less';
 
-function MsgContainer({ imgs }) {
+function MsgContainer({ imgs, imgTop, nickname='匿名', content='' }) {
   const imgGridProp = {
     imgs
   };
@@ -11,11 +11,11 @@ function MsgContainer({ imgs }) {
   return (<div className={styles.container}>
     <div className={styles.topBar}>
       <div className={styles.leftSection}>
-        <img  className={styles.imgTop} src="http://www.fotor.com/images2/features/photo_effects/e_bw.jpg" />
+        <img  className={styles.imgTop} src={imgTop} />
       </div>
       <div className={styles.rightSection}>
-        <p>昵称</p>
-        <p>为冯绍峰家里舒服的行家里手里发生了看法六级考试都分开了多少放假开始地方 圣诞节快乐过飞机连哭都哭了国际法的空间里度过将快乐时光看来多福多寿将快乐的风格看来姐姐的风格将快乐的风格</p>
+        <p>{nickname}</p>
+        {content.length > 0 ? <p>{content}</p>: <p></p>}
         <ImgGrid {...imgGridProp} />
       </div>
     </div>

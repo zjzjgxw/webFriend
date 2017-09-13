@@ -27,7 +27,10 @@ function home({location,dispatch,home }) {
   //   imgs: ['http://img.7139.com/file/201207/04/299ac0ab2be96c216c6bd5255945cb6c.jpg']
   // };
   const msgCongtainerProp = {
-    imgs
+    imgs,
+    imgTop: 'http://img.7139.com/file/201207/04/299ac0ab2be96c216c6bd5255945cb6c.jpg',
+    content: '的房间克里斯朵夫将快乐的身份卡勒季斯地方将克里斯朵夫水淀粉加快了速度',
+    nickname: 'Vic',
   };
   return (
     <div>
