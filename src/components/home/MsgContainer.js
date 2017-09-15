@@ -5,12 +5,17 @@ import CommentButton from '../common/CommentButton'
 import styles from './MsgContainer.less';
 
 
-function MsgContainer({ imgs, imgTop, nickname='匿名', content='' }) {
+function MsgContainer({ id, imgs, imgTop, nickname='匿名', content='', showAction,show, hideAction }) {
   const imgGridProp = {
     imgs
   };
+  const commentButtonProp = {
+    id,
+    show,
+    showAction
+  };
 
-  return (<div className={styles.container}>
+  return (<div className={styles.container} onClick={hideAction}>
     <div className={styles.topBar}>
       <div className={styles.leftSection}>
         <img  className={styles.imgTop} src={imgTop} />
@@ -22,7 +27,7 @@ function MsgContainer({ imgs, imgTop, nickname='匿名', content='' }) {
       </div>
     </div>
     <div className={styles.interactBar}>
-      <CommentButton />
+      <CommentButton {...commentButtonProp} />
     </div>
   </div>)
   ;

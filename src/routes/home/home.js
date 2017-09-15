@@ -6,13 +6,14 @@ import MsgContainer from '../../components/home/MsgContainer'
 
 
 function home({location,dispatch,home }) {
+  const { curShow } = home
+
   function publish() {
     dispatch(routerRedux.push({
         pathname: '/publish',
       }),
     );
   }
-
   const imgs = ['http://img.7139.com/file/201207/04/299ac0ab2be96c216c6bd5255945cb6c.jpg',
   'http://img06.tooopen.com/images/20161010/tooopen_sy_181352973287.jpg',
   'http://img06.tooopen.com/images/20160921/tooopen_sy_179583447187.jpg',
@@ -27,10 +28,32 @@ function home({location,dispatch,home }) {
   //   imgs: ['http://img.7139.com/file/201207/04/299ac0ab2be96c216c6bd5255945cb6c.jpg']
   // };
   const msgCongtainerProp = {
+    id:1,
     imgs,
     imgTop: 'http://img.7139.com/file/201207/04/299ac0ab2be96c216c6bd5255945cb6c.jpg',
     content: '的房间克里斯朵夫将快乐的身份卡勒季斯地方将克里斯朵夫水淀粉加快了速度',
     nickname: 'Vic',
+    show: curShow == 1,
+    showAction(id){
+      console.log('show'+id);
+      dispatch({
+        type: 'home/showComment',
+        payload: {
+          curShow: id
+        }
+      });
+    },
+    hideAction(){
+      if(curShow !== 0) {
+        console.log('hide');
+        dispatch({
+          type: 'home/showComment',
+          payload: {
+            curShow: 0
+          }
+        });
+      }
+    }
   };
   return (
     <div>
@@ -39,7 +62,9 @@ function home({location,dispatch,home }) {
                 <p key="publish" onClick={e=>publish(e)}>发布</p>,
               ]}
       ></NavBar>
-      <MsgContainer {...msgCongtainerProp} />
+      <div>
+        <MsgContainer {...msgCongtainerProp} />
+      </div>
     </div>
   );
 }

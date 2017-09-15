@@ -9,6 +9,7 @@ export default {
 
   state: {
     list: [],
+    curShow: 0,
   },
 
   subscriptions: {
@@ -42,6 +43,9 @@ export default {
     save(state, action) {
       return { ...state, ...action.payload };
     },
+    showComment(state, action) {
+      return { ...state, ...action.payload }
+    }
   },
 
 };
