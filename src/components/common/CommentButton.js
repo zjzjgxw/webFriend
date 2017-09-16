@@ -1,6 +1,4 @@
 import React from 'react';
-import { routerRedux } from 'dva/router';
-import { Grid } from 'antd-mobile';
 import styles from './CommentButton.less'
 
 function CommentButton({ id, show=false, showAction }) {

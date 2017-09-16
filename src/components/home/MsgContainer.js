@@ -1,11 +1,12 @@
 import React from 'react';
-import { routerRedux } from 'dva/router';
 import ImgGrid from '../common/ImgGrid';
-import CommentButton from '../common/CommentButton'
+import CommentButton from '../common/CommentButton';
+import BubbleDialog from '../common/BubbleDialog';
 import styles from './MsgContainer.less';
 
 
-function MsgContainer({ id, imgs, imgTop, nickname='匿名', content='', showAction,show, hideAction }) {
+function MsgContainer({ id, imgs, imgTop, nickname='匿名', content='', showAction,show, hideAction,
+                        msgList, bananaNum}) {
   const imgGridProp = {
     imgs
   };
@@ -13,6 +14,10 @@ function MsgContainer({ id, imgs, imgTop, nickname='匿名', content='', showAct
     id,
     show,
     showAction
+  };
+  const bubbleDialogProp = {
+    msgList,
+    bananaNum,
   };
 
   return (<div className={styles.container} onClick={hideAction}>
@@ -27,7 +32,15 @@ function MsgContainer({ id, imgs, imgTop, nickname='匿名', content='', showAct
       </div>
     </div>
     <div className={styles.interactBar}>
-      <CommentButton {...commentButtonProp} />
+      <div className={styles.leftDiv}>
+        <p>三小时前</p>
+      </div>
+      <div className={styles.rightDiv}>
+        <CommentButton {...commentButtonProp} />
+      </div>
+    </div>
+    <div className={styles.dialogDiv}>
+      <BubbleDialog {...bubbleDialogProp} />
     </div>
   </div>)
   ;
