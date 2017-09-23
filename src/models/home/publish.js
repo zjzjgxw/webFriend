@@ -1,7 +1,7 @@
 import { routerRedux } from 'dva/router';
 import { Toast } from 'antd-mobile';
 import config from '../../utils/config';
-import { uploadImg } from '../../services/app';
+import { uploadImg, publishInformation } from '../../services/app';
 const SUCCESS = 200;
 export default {
 
@@ -9,22 +9,7 @@ export default {
 
   state: {
     content:'',
-    imgs: [{
-      url: 'https://zos.alipayobjects.com/rmsportal/PZUUCKTRIHWiZSY.jpeg',
-      id: '2121',
-    }, {
-      url: 'https://zos.alipayobjects.com/rmsportal/hqQWgTXdrlmVVYi.jpeg',
-      id: '2122',
-    },{
-      url: 'http://img.zcool.cn/community/03320dd554c75c700000158fce17209.jpg',
-      id: '2122',
-    },{
-      url: 'http://img06.tooopen.com/images/20160924/tooopen_sy_179893728711.jpg',
-      id: '2122',
-    },{
-      url: 'http://t2.27270.com/uploads/tu/201612/98/st94.png',
-      id: '2122',
-    }],
+    imgs: [],
     province:'',
     city:''
   },
@@ -50,20 +35,30 @@ export default {
         yield put({
           type: 'uploadSuccess',
           payload: {
-            url: config.imgPreUrL + res.data.filePath
+            url: res.data.filePath
           }
         })
       } else{
         Toast.info(res.msg);
       }
     },
+    *publish({ payload }, { call, put }) {
+      const res = yield call(publishInformation, payload);
+      if (res.code === SUCCESS) {
+        Toast.info('发布成功')
+      } else{
+        Toast.info(res.msg);
+      }
+    }
   },
 
   reducers: {
+    save(state, action) {
+      return { ...state, ...action.payload };
+    },
     uploadSuccess(state, action) {
       const { imgs } = state;
       imgs.push(action.payload);
-      console.log(imgs);
       return { ...state, imgs };
     },
     removeImg(state, action) {

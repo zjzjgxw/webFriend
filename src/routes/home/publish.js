@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'dva';
-import { NavBar } from 'antd-mobile';
+import { NavBar, Toast } from 'antd-mobile';
 import MsgPublish from '../../components/publish/MsgPublish';
 import { routerRedux } from 'dva/router';
 
@@ -28,18 +28,62 @@ function publish({location,dispatch,publish }) {
           index
         }
       })
+    },
+    onDistrictChange(province, city){
+      dispatch({
+        type:'publish/save',
+        payload:{
+          province,
+          city
+        }
+      })
+    },
+    onUpdateContent(val){
+      dispatch({
+        type:'publish/save',
+        payload:{
+          content: val
+        }
+      })
     }
   };
+
+  function onPublish(e) {
+    if(content.trim().length === 0){
+      Toast.info('请输入文字内容');
+      return;
+    }
+    if(imgs.length === 0){
+      Toast.info('请上传至少一张图片');
+      return;
+    }
+    if(province === ''){
+      Toast.info('请现在地址');
+      return;
+    }
+    dispatch({
+      type:'publish/publish',
+      payload:{
+        content,
+        imgs: imgs.map(function (item) {
+          return item.url
+        }),
+        province,
+        city
+      }
+    })
+  }
+
 
   return (
     <div>
       <NavBar key="navBar" mode="light"
               rightContent={[
-                <p key="publish" onClick={e=>publish(e)}>确认</p>,
+                <p key="publish" onClick={e=>onPublish(e)}>确认</p>,
               ]}
               iconName={false}
               leftContent="返回"
-              onLeftClick={() => console.log('onLeftClick')}
+              onLeftClick={()=>{}}
       />
       <MsgPublish  { ...msgPublishProp}/>
     </div>

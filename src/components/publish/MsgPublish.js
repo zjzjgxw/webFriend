@@ -2,13 +2,14 @@ import React from 'react';
 import { TextareaItem, ImagePicker, Picker, List } from 'antd-mobile';
 import { SingleImgView } from 'react-imageview';
 import { address } from '../../utils/address';
+import config from '../../utils/config';
 import 'react-imageview/dist/react-imageview.min.css';
 import styles from './MsgPublish.less';
 
 
-function MsgPublish({ imgs =[], province='',city='', onUploadImg, onRemoveImg}) {
+function MsgPublish({ imgs =[], province='',city='', onUploadImg, onRemoveImg,onDistrictChange,onUpdateContent}) {
+  console.log(imgs);
   function onImageChange(files, type, index){
-    console.log(files, type, index);
     if(type === 'add'){
       files.forEach(function (item) {
         if(item.hasOwnProperty('file')){
@@ -31,17 +32,19 @@ function MsgPublish({ imgs =[], province='',city='', onUploadImg, onRemoveImg}) 
     });
   }
   function onChangeHandle(val) {
-    console.log(val);
-    // onDistrictChange(val);
+    onDistrictChange(val[0], val[1]);
   }
 
   return (<div className={styles.container}>
     <TextareaItem
       rows={3}
       placeholder="这一刻的想法"
+      onBlur={onUpdateContent}
     />
     <ImagePicker
-      files={imgs}
+      files={imgs.map(function (item) {
+        return { url: config.imgPreUrL + item.url }
+      })}
       onChange={onImageChange}
       onImageClick={onImageClick}
       selectable={imgs.length < 9}

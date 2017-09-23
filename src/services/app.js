@@ -44,3 +44,11 @@ export async function uploadImg(params) {
     data: formatParams(params)
   })
 }
+
+export async function publishInformation(params) {
+  return request({
+    url: `/rest/information`,
+    method: 'POST',
+    data: formatParams(params)
+  })
+}
