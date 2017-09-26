@@ -74,6 +74,12 @@ function publish({location,dispatch,publish }) {
     })
   }
 
+  function goBack() {
+    dispatch(routerRedux.push({
+        pathname: '/home',
+      }),
+    );
+  }
 
   return (
     <div>
@@ -83,7 +89,7 @@ function publish({location,dispatch,publish }) {
               ]}
               iconName={false}
               leftContent="返回"
-              onLeftClick={()=>{}}
+              onLeftClick={e=>goBack(e)}
       />
       <MsgPublish  { ...msgPublishProp}/>
     </div>

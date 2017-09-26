@@ -33,8 +33,9 @@ export default {
     *login({ payload }, { call, put }) {
       const res = yield call(login, payload);
       if(res.code === SUCCESS){
+        const prePath = window.localStorage.getItem('prePath');
         yield put(routerRedux.push({
-          pathname: '/center',
+          pathname: prePath,
         }));
       }else{
         Toast.info(res.msg);

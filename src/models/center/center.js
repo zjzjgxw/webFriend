@@ -37,6 +37,7 @@ export default {
     *checkLogin({ payload }, { call, put }) {
       const res = yield call(checkLogin, payload);
       if (res.code !== SUCCESS) {
+        window.localStorage.setItem('prePath','/center');
         yield put(routerRedux.push({
           pathname: '/login',
         }));

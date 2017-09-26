@@ -8,7 +8,6 @@ import styles from './MsgPublish.less';
 
 
 function MsgPublish({ imgs =[], province='',city='', onUploadImg, onRemoveImg,onDistrictChange,onUpdateContent}) {
-  console.log(imgs);
   function onImageChange(files, type, index){
     if(type === 'add'){
       files.forEach(function (item) {

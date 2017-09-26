@@ -9,10 +9,10 @@ function home({location,dispatch,home }) {
   const { curShow } = home
 
   function publish() {
-    dispatch(routerRedux.push({
-        pathname: '/publish',
-      }),
-    );
+    dispatch({
+      type: 'home/checkLogin',
+      payload: location.query,
+    });
   }
   const imgs = ['http://img.7139.com/file/201207/04/299ac0ab2be96c216c6bd5255945cb6c.jpg',
   'http://img06.tooopen.com/images/20161010/tooopen_sy_181352973287.jpg',
