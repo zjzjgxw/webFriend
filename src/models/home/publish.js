@@ -45,7 +45,10 @@ export default {
     *publish({ payload }, { call, put }) {
       const res = yield call(publishInformation, payload);
       if (res.code === SUCCESS) {
-        Toast.info('发布成功')
+        Toast.info('发布成功');
+        yield  put(routerRedux.push({
+          pathname: '/home',
+        }))
       } else{
         Toast.info(res.msg);
       }
